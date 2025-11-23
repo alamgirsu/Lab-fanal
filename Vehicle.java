@@ -1,50 +1,30 @@
 
-package extrapolymorphism2;
+package extraabstraction6;
 
-public class Vehicle {
 
-    private int speed;
-
-    void speedUp() {
-        speed += 10;
-    }
-
-    int getSpeed() {
-        return speed;
-    }
+abstract class Vehicle {
+     abstract void startEngine();
+    abstract void stopEngine();
 }
-
 class Car extends Vehicle {
-
-    @Override
-    void speedUp() {
-        super.speedUp();
-        System.out.println("Car speed increased by 22 units.");
-    }
+    void startEngine() { System.out.println("Car engine started."); }
+    void stopEngine() { System.out.println("Car engine stopped."); }
 }
 
 class Motorcycle extends Vehicle {
-
-    @Override
-    void speedUp() {
-        super.speedUp();
-        System.out.println("Motorcycle speed increased by 12 units.");
-    }
+    void startEngine() { System.out.println("Motorcycle engine started."); }
+    void stopEngine() { System.out.println("Motorcycle engine stopped."); }
 }
 
-class Main {
-
+ class Main {
     public static void main(String[] args) {
         Vehicle car = new Car();
-        Vehicle motorcycle = new Motorcycle();
+        Vehicle bike = new Motorcycle();
 
-        System.out.println("Car initial speed: " + car.getSpeed());
-        System.out.println("Motorcycle initial speed: " + motorcycle.getSpeed());
+        car.startEngine();
+        car.stopEngine();
 
-        car.speedUp();
-        motorcycle.speedUp();
-
-        System.out.println("Car speed after speeding up: " + car.getSpeed());
-        System.out.println("Motorcycle speed after speeding up: " + motorcycle.getSpeed());
+        bike.startEngine();
+        bike.stopEngine();
     }
 }

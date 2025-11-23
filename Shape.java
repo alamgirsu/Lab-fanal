@@ -1,65 +1,55 @@
-package extrapolymorphism3;
 
-public class Shape {
+package extraabstraction2;
 
-    double calculateArea() {
-        return 0;
-    }
+abstract class Shape {
+     abstract double calculateArea();
+    abstract double calculatePerimeter();
 }
 
 class Circle extends Shape {
-
     private double radius;
 
-    Circle(double radius) {
+    public Circle(double radius) {
         this.radius = radius;
     }
 
-    @Override
     double calculateArea() {
         return Math.PI * radius * radius;
     }
-}
 
-class Rectangle extends Shape {
-
-    private double width, height;
-
-    Rectangle(double width, double height) {
-        this.width = width;
-        this.height = height;
-    }
-
-    @Override
-    double calculateArea() {
-        return width * height;
+    double calculatePerimeter() {
+        return 2 * Math.PI * radius;
     }
 }
 
 class Triangle extends Shape {
+    private double side1, side2, side3;
 
-    private double base, height;
-
-    Triangle(double base, double height) {
-        this.base = base;
-        this.height = height;
+    public Triangle(double side1, double side2, double side3) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
     }
 
-    @Override
     double calculateArea() {
-        return 0.5 * base * height;
+        double s = (side1 + side2 + side3) / 2;
+        return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+
+    double calculatePerimeter() {
+        return side1 + side2 + side3;
     }
 }
 
 class Main {
-
     public static void main(String[] args) {
-        Shape circle = new Circle(4);
-        Shape rectangle = new Rectangle(12, 34);
-        Shape triangle = new Triangle(5, 9);
+        Circle c = new Circle(4);
+        Triangle t = new Triangle(3, 4, 5);
 
-        System.out.println("Area of Circle: " + circle.calculateArea());
-        System.out.println("Area of Rectangle: " + rectangle.calculateArea());
-        System.out.println("Area of Triangle: " + triangle.calculateArea());
+        System.out.println("Circle Area: " + c.calculateArea());
+        System.out.println("Circle Perimeter: " + c.calculatePerimeter());
+        System.out.println("Triangle Area: " + t.calculateArea());
+        System.out.println("Triangle Perimeter: " + t.calculatePerimeter());
     }
 }
+
