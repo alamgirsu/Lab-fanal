@@ -1,55 +1,48 @@
 
-package extraabstraction2;
+package extrainheritance7;
 
-abstract class Shape {
-     abstract double calculateArea();
-    abstract double calculatePerimeter();
-}
-
-class Circle extends Shape {
+public class Shape {
+    public double getPerimeter() {
+        return 0.0;
+    }
+    public double getArea() {
+        return 0.0;
+    }
+    public class Circle extends Shape{
     private double radius;
 
+   
     public Circle(double radius) {
         this.radius = radius;
     }
 
-    double calculateArea() {
-        return Math.PI * radius * radius;
-    }
-
-    double calculatePerimeter() {
+    @Override
+    public double getPerimeter() {
         return 2 * Math.PI * radius;
     }
-}
 
-class Triangle extends Shape {
-    private double side1, side2, side3;
-
-    public Triangle(double side1, double side2, double side3) {
-        this.side1 = side1;
-        this.side2 = side2;
-        this.side3 = side3;
-    }
-
-    double calculateArea() {
-        double s = (side1 + side2 + side3) / 2;
-        return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
-    }
-
-    double calculatePerimeter() {
-        return side1 + side2 + side3;
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
     }
 }
-
-class Main {
-    public static void main(String[] args) {
-        Circle c = new Circle(4);
-        Triangle t = new Triangle(3, 4, 5);
-
-        System.out.println("Circle Area: " + c.calculateArea());
-        System.out.println("Circle Perimeter: " + c.calculatePerimeter());
-        System.out.println("Triangle Area: " + t.calculateArea());
-        System.out.println("Triangle Perimeter: " + t.calculatePerimeter());
+public class Main {
+     public static void main(String[] args) {
+        
+        double r = 8.0;
+        Circle c1 = new Circle(r);
+        System.out.println("Radius of the circle=" + r);
+        System.out.println("Perimeter: " + c1.getPerimeter());
+        System.out.println("Area: " + c1.getArea());
+        
+        
+        r = 3.2;
+        Circle c2 = new Circle(r);
+        System.out.println("\nRadius of the circle=" + r);
+        System.out.println("Perimeter: " + c2.getPerimeter());
+        System.out.println("Area: " + c2.getArea());
     }
 }
 
+
+}

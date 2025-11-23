@@ -1,55 +1,44 @@
 
-package extraencapsulation4;
+package extrainheritance4;
 
 public class Employee {
-    private int employee_id;
-  private String employee_name;
+    private int salary;
+    
+    public Employee(int salary) {
+        this.salary = salary;
+    }
 
-  private double employee_salary;
+    public void work() {
 
-  public int getEmployeeId() {
-    return employee_id;
-  }
+        System.out.println("working as an employee!");
+    }
 
-  public void setEmployeeId(int employeeId) {
-    this.employee_id = employeeId;
-  }
+    public int getSalary() {
+        return salary;
+    }
+    public class HRManager  extends Employee{
+    public HRManager(int salary) {
+        super(salary);
+    }
 
-  public String getEmployeeName() {
-    return employee_name;
-  }
+    public void work() {
+        System.out.println("\nManaging employees");
+    }
 
-  public void setEmployeeName(String employeeName) {
-    this.employee_name = employeeName;
-  }
-  public double getEmployeeSalary() {
-    return employee_salary;
-  }
-
-  public void setEmployeeSalary(double employeeSalary) {
-    this.employee_salary = employeeSalary;
-  }
-
-  public String getFormattedSalary() {
-    return String.format("$%.2f", employee_salary);
-  }
-  public class Main {
-    public static void main(String[] args) {
-        Employee employee = new Employee();
-        
-        employee.setEmployeeId(15);
-        employee.setEmployeeName("MD Naimur Rahman Durjoy");
-        employee.setEmployeeSalary(4900.0);
-
-        int employeeId = employee.getEmployeeId();
-        String employeeName = employee.getEmployeeName();
-        String formattedSalary = employee.getFormattedSalary();
-
-	System.out.println("Employee Details:");
-        System.out.println("ID: " + employeeId);
-        System.out.println("Name: " + employeeName);
-        System.out.println("Salary: " + formattedSalary);
+    public void addEmployee() {
+        System.out.println("\nAdding new employee!");
     }
 }
-
+public class Main {
+     public static void main(String[] args) {
+        Employee emp = new Employee(40000);
+        
+        HRManager mgr = new HRManager(70000);
+        emp.work();
+        System.out.println("Employee salary: " + emp.getSalary());
+        mgr.work();
+        System.out.println("Manager salary: " + mgr.getSalary());
+        mgr.addEmployee();
+    }
+}
 }

@@ -1,30 +1,22 @@
 
-package extraabstraction6;
+package extrainheritance2;
 
-
-abstract class Vehicle {
-     abstract void startEngine();
-    abstract void stopEngine();
-}
-class Car extends Vehicle {
-    void startEngine() { System.out.println("Car engine started."); }
-    void stopEngine() { System.out.println("Car engine stopped."); }
-}
-
-class Motorcycle extends Vehicle {
-    void startEngine() { System.out.println("Motorcycle engine started."); }
-    void stopEngine() { System.out.println("Motorcycle engine stopped."); }
-}
-
- class Main {
-    public static void main(String[] args) {
-        Vehicle car = new Car();
-        Vehicle bike = new Motorcycle();
-
-        car.startEngine();
-        car.stopEngine();
-
-        bike.startEngine();
-        bike.stopEngine();
+public class Vehicle {
+    public void drive() {
+        System.out.println("Repairing a vehicle");
     }
+    public class Car extends Vehicle{
+     @Override
+    public void drive() {
+        System.out.println("Repairing a car");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Vehicle vehicle = new Vehicle();
+        Car car = new Car();
+        vehicle.drive();
+        car.drive(); 
+    }
+}
 }

@@ -1,39 +1,31 @@
 
-package extraencapsulation3;
+package extrainheritance3;
 
-public class Rectangle {
+public class Shape {
+     public double getArea() {
+        return 0.0;
+    }
+
+public class Rectangle  extends Shape{
     private double length;
-  private double width;
+    private double width;
+    
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+    
+    @Override
 
-  public double getLength() {
-    return length;
-  }
-
-  public void setLength(double length) {
-    this.length = length;
-  }
-
-  public double getWidth() {
-    return width;
-  }
-
-  public void setWidth(double width) {
-    this.width = width;
-  }
-  
-public class Main {
-     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle();
-
-        rectangle.setLength(6.7);
-        rectangle.setWidth(12.0);
-
-        double length = rectangle.getLength();
-        double width = rectangle.getWidth();
-
-        System.out.println("Length: " + length);
-        System.out.println("Width: " + width);
+    public double getArea() {
+        return length * width;
     }
 }
-
+public class Main {
+    public static void main(String[] args) {
+        Rectangle rectangle = new Rectangle(3.0, 10.0);
+        double area = rectangle.getArea();
+        System.out.println("The area of the rectangle is: " + area);
+    }
+}
 }

@@ -1,50 +1,50 @@
 
-package extraencapsulation;
+package extrainheritance6;
 
 public class Person {
-    private String name;
-  private int age;
-  private String country;
+    private String firstName;
+    private String lastName;
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public int getAge() {
-    return age;
-  }
-
-  public void setAge(int age) {
-    this.age = age;
-  }
-
-  public String getCountry() {
-    return country;
-  }
-
-  public void setCountry(String country) {
-    this.country = country;
-  }
-  public class Main {
-    public static void main(String[] args) {
-        Person person = new Person();
-
-        person.setName("Arthfael Viktorija");
-        person.setAge(25);
-        person.setCountry("USA");
-
-        String name = person.getName();
-        int age = person.getAge();
-        String country = person.getCountry();
-
-        System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("Country: " + country);
+   
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public class Employee extends Person {
+     private int employeeId;
+    
+    private String jobTitle;
+    
+    public Employee(String firstName, String lastName, int employeeId, String jobTitle) {
+        super(firstName, lastName);
+        this.employeeId = employeeId;
+        this.jobTitle = jobTitle;
+    }
+    public int getEmployeeId() {
+        return employeeId;
+    }
+    @Override
+    public String getLastName() {
+        return super.getLastName() + ", " + jobTitle;
     }
 }
+
+public class Main {
+      public static void main(String[] args) {
+        
+      
+        Employee employee1 = new Employee("Kortney", "Rosalee", 4451, "HR Manager");
+        System.out.println(employee1.getFirstName() + " " + employee1.getLastName() + " (" + employee1.getEmployeeId() + ")");
+        Employee employee2 = new Employee("Junior", "Philipa", 4452, "Software Manager");
+        System.out.println(employee2.getFirstName() + " " + employee2.getLastName() + " (" + employee2.getEmployeeId() + ")");
+    }
+}
+
 
 }
