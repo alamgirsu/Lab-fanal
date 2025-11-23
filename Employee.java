@@ -1,62 +1,55 @@
 
-package extraabstraction5;
+package extraencapsulation4;
 
-abstract class Employee {
-    protected String name;
-    protected double baseSalary;
+public class Employee {
+    private int employee_id;
+  private String employee_name;
 
-    public Employee(String name, double baseSalary) {
-        this.name = name;
-        this.baseSalary = baseSalary;
-    }
+  private double employee_salary;
 
-    abstract double calculateSalary();
-    abstract void displayInfo();
-}
+  public int getEmployeeId() {
+    return employee_id;
+  }
 
-class Manager extends Employee {
-    private double bonus;
+  public void setEmployeeId(int employeeId) {
+    this.employee_id = employeeId;
+  }
 
-    public Manager(String name, double baseSalary, double bonus) {
-        super(name, baseSalary);
-        this.bonus = bonus;
-    }
+  public String getEmployeeName() {
+    return employee_name;
+  }
 
-    double calculateSalary() {
-        return baseSalary + bonus;
-    }
+  public void setEmployeeName(String employeeName) {
+    this.employee_name = employeeName;
+  }
+  public double getEmployeeSalary() {
+    return employee_salary;
+  }
 
-    void displayInfo() {
-        System.out.println("Manager: " + name);
-        System.out.println("Total Salary: $" + calculateSalary());
-    }
-}
+  public void setEmployeeSalary(double employeeSalary) {
+    this.employee_salary = employeeSalary;
+  }
 
-class Programmer extends Employee {
-    private int overtimeHours;
-    private double hourlyRate;
-
-    public Programmer(String name, double baseSalary, int overtimeHours, double hourlyRate) {
-        super(name, baseSalary);
-        this.overtimeHours = overtimeHours;
-        this.hourlyRate = hourlyRate;
-    }
-
-    double calculateSalary() {
-        return baseSalary + (overtimeHours * hourlyRate);
-    }
-
-    void displayInfo() {
-        System.out.println("Programmer: " + name);
-        System.out.println("Total Salary: $" + calculateSalary());
-    }
-} class Main {
+  public String getFormattedSalary() {
+    return String.format("$%.2f", employee_salary);
+  }
+  public class Main {
     public static void main(String[] args) {
-        Employee m = new Manager("Tose", 6000, 1000);
-        Employee p = new Programmer("Durjoy", 5000, 20, 25);
+        Employee employee = new Employee();
+        
+        employee.setEmployeeId(15);
+        employee.setEmployeeName("MD Naimur Rahman Durjoy");
+        employee.setEmployeeSalary(4900.0);
 
-        m.displayInfo();
-        System.out.println("\n\n");
-        p.displayInfo();
+        int employeeId = employee.getEmployeeId();
+        String employeeName = employee.getEmployeeName();
+        String formattedSalary = employee.getFormattedSalary();
+
+	System.out.println("Employee Details:");
+        System.out.println("ID: " + employeeId);
+        System.out.println("Name: " + employeeName);
+        System.out.println("Salary: " + formattedSalary);
     }
+}
+
 }
